@@ -1,5 +1,5 @@
 # PragFromer: Learning to Parallelize in a Shared-Memory Environment with Transformers
-This repository contains the official source code used to produce the results reported in this [paper](TBA).
+This repository contains the official source code used to produce the results reported in this [TBA].
 
 <details><summary><strong>Table of Contents</strong></summary>
 
@@ -44,16 +44,30 @@ python==3.7
 
 The database is located [here](https://github.com/pragformer/PragFormer/blob/main/Open_OMP.tar.gz)
 It contains folders, whereas each folder contains 3 files:
-**code.c** - contains the textual code 
-**pragma.c** - contains the pragma of the corresponding code.c -- if no pragma is found, the file doesn't exist
-**pickle_code.pkl** - contains a class from global_paramerets.py in the project that contains 3 data structures -- the for-loop main node (pycparer node c_ast: For); the pragma node (pycparser node c_ast: Pragma); and the inner function defenitions inside the for-loop (pycparser node c_ast: FuncDef).
+1. **code.c** - contains the textual code 
+2. **pragma.c** - contains the pragma of the corresponding code.c -- if no pragma is found, the file doesn't exist
+3. **pickle_code.pkl** - contains a class from global_paramerets.py in the project that contains 3 data structures -- the for-loop main node (pycparer node c_ast: For); the pragma node (pycparser node c_ast: Pragma); and the inner function defenitions inside the for-loop (pycparser node c_ast: FuncDef).  
 
-Please note, that the pickle file can easily be created by wrapping code.c with a int main() {} and applying the pycparser parser.
+Please note, that the pickle file can easily be created by wrapping code.c with a int main() {} and applying the pycparser parser.  
 
-In addition, the database contains a json file that maps the folders -- each key in the json file represents a database record: code path, pragma path, pickle path, a unique id and the original file used to create the code (note that is locally, to retrace it simply search for the relevant project and username).
+In addition, the database contains a json file that maps the folders -- each key in the json file represents a database record: code path, pragma path, pickle path, a unique id and the original file used to create the code (note that is locally, to retrace it simply search for the relevant project and username).  
 
-The code used to create the database is located in the PragmaForExtractor in this repository.
+The code used to create the database is located in the PragmaForExtractor in this repository.  
 
 
 ## 4. Code
 
+This project contains 2 code folders:
+1. PragmaForExtactor -- contains the code to create the database (Open-OMP.tar.gz) and a necesarry globals_parameter.py to extract the pickle file
+2. Model -- contains the files to reproduce the paper.
+
+Inside Model there are several files:
+1. data_creator.py -- creates the pickle file for the model. of course you can create your own pickle file as long as it saved as the Data class inside global_parameters.py (9 fields - train/valid/test and for each, data/label/id)
+2. train.py -- the training algorithm 
+3. tokenizer.py -- the tokenizer of the code
+4. predict.py -- prediction algorithm - note that it creates two txt files
+5. statistics.py -- plot the result or extract number of tokens
+6. model.py -- define the model (PT-DeepSCC + FC layer)
+7. global_parameters.py -- defines the data structure for the model
+8. database_manipulator.py -- formatted access to the database
+9. main.py -- train/predict the model
