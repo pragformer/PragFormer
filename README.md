@@ -52,6 +52,12 @@ Please note, that the pickle file can easily be created by wrapping code.c with 
 
 In addition, the database contains a json file that maps the folders -- each key in the json file represents a database record: code path, pragma path, pickle path, a unique id and the original file used to create the code (note that is locally, to retrace it simply search for the relevant project and username).  
 
+**log_repositories_readme.txt** contains the repositories metadata: each line starts with a label:
+1. "No Readme" - project doesn't contain a readme.
+2. "Empty Readme" - project contains a readme without the word "test" or "benchmark" - which states that it is probably a real life application.
+3. "Benchmark Readme" - project contains a readme with the word benchmark.
+4. "Test Readme" - project contains a readme with the word testing.
+
 The code used to create the database is located in the PragmaForExtractor in this repository.  
 
 
