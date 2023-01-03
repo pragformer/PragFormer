@@ -1,3 +1,6 @@
+
+![alt text](https://github.com/pragformer/PragFormer/blob/main/Lime/lime.jpg?raw=true)
+
 In \autoref{table:classification_examples} we present representative examples and the corresponding prediction of
 \ourmod{} over the benchmark tests. Explaining and understanding the reason behind a model's prediction is a difficult task.
 Nonetheless, there are many algorithms that attempt to give an explanation or an intuition for classifiers' decisions
