@@ -3,8 +3,7 @@
 
 In the example above we present representative examples and the corresponding prediction of
 PragFormer over the benchmark tests. Explaining and understanding the reason behind a model's prediction is a difficult task.
-Nonetheless, there are many algorithms that attempt to give an explanation or an intuition for classifiers' decisions
-\cite{adadi2018peeking}, such as LIME. LIME studies the connections between keywords (tokens) 
+Nonetheless, there are many algorithms that attempt to give an explanation or an intuition for classifiers' decisions, such as [LIME](https://github.com/marcotcr/lime). LIME studies the connections between keywords (tokens) 
 of an input and the change in the prediction of a model once they are removed. Finally, LIME presents 
 the probability that the keyword affected the prediction. In our case, this might indicate how PragFormer
 focuses on keywords and statements. Thus, in order to gain an intuition for the predicted outcome of PragFormer,
